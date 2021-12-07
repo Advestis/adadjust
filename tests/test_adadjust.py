@@ -2,7 +2,7 @@ from adadjust import Function
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.rcParams.update({"text.usetex": True})
+# plt.rcParams.update({"text.usetex": True})
 
 nsamples = 1000
 a = 0.3
