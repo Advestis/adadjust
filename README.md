@@ -5,13 +5,13 @@ Implement the notion of fittable function
 ## Installation
 
 ```bash
-pip install adfit
+pip install adadjust
 ```
 
 ## Usage
 
 ```python
-from adfit import Function
+from adadjust import Function
 import numpy as np
 import matplotlib.pyplot as plt
 plt.rcParams.update({"text.usetex": True})  # Needs texlive installed
