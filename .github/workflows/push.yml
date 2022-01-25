@@ -31,11 +31,15 @@ jobs:
 
       - name: build
         run: |
-          make install
+          pip install -U pip
           python setup.py sdist
 
       - name: make doc
-        run: make doc
+        run: |
+          pip install pdoc3
+          pdoc --html adajust -o docs
+          mv docs/adajust/* docs/
+          rm -r docs/adajust
 
       - name: commit doc
         run: |
@@ -52,20 +56,10 @@ jobs:
           branch: "gh-pages"
           force: true
 
-#      - name: topypi
-#        if: ${{ matrix.python-version == 3.8 }}
-#        uses: pypa/gh-action-pypi-publish@master
-#        with:
-#          user: ${{ secrets.ORG_PYPI_LOGIN }}
-#          password: ${{ secrets.ORG_PYPI_PASSWD }}
-#          skip_existing: true
-#          verbose: true
-
-#      - name: todocker
-#        if: ${{ matrix.python-version == 3.8 }}
-#        uses: docker/build-push-action@v1
-#        with:
-#          username: ${{ secrets.ORG_DOCKER_LOGIN }}
-#          password: ${{ secrets.ORG_DOCKER_PASSWD }}
-#          repository: advestisrepositories/${{ env.REPO_NAME }}
-#          tag_with_ref: true
+      - name: topypi
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: ${{ secrets.ORG_PYPI_LOGIN }}
+          password: ${{ secrets.ORG_PYPI_PASSWD }}
+          skip_existing: true
+          verbose: true
