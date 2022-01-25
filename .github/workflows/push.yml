@@ -38,9 +38,9 @@ jobs:
       - name: make doc
         run: |
           pip install pdoc3
-          pdoc --html adajust -o docs
-          mv docs/adajust/* docs/
-          rm -r docs/adajust
+          pdoc --html adadjust -o docs
+          mv docs/adadjust/* docs/
+          rm -r docs/adadjust
 
       - name: commit doc
         run: |
