@@ -42,10 +42,10 @@ def test_fit():
     rr = round(func.compute_rsquared(x, y, params, 2), 3)
     params2 = func2.fit(x, y, np.array([0, 0]))[0]
     rr2 = round(func2.compute_rsquared(x, y, params2), 3)
-    table = Function.make_table(
+    _ = Function.make_table(
         [func, func2], [params, params2], [rr, rr2], caption="Linear and Square fit", path_output="tests/data/table.pdf"
     )
-    table.compile()
+    # table.compile()
     Function.plot(x, [func, func2], [params, params2], argss=[(2,), ()], y=y, rsquared=[rr, rr2])
     plt.gcf().savefig("tests/data/plot.png")
 
@@ -58,9 +58,9 @@ def test_fit():
 #     rr = func.compute_rsquared(x, y, params)
 #     params2 = func2.fit(x, y, np.array([0, 0]))[0]
 #     rr2 = func2.compute_rsquared(x, y, params2)
-#     table = Function.make_table(
+#     _ = Function.make_table(
 #         [func, func2], [params, params2], [rr, rr2], caption="Linear and Square fit", path_output="tests/data/table.pdf"
 #     )
-#     table.compile()
+    table.compile()
 #     Function.plot(x, [func, func2], [params, params2], y=y, rsquared=[rr, rr2])
 #     plt.gcf().savefig("tests/data/plot.pdf")
