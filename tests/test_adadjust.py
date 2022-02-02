@@ -61,6 +61,6 @@ def test_fit():
 #     _ = Function.make_table(
 #         [func, func2], [params, params2], [rr, rr2], caption="Linear and Square fit", path_output="tests/data/table.pdf"
 #     )
-    table.compile()
+#     # table.compile()
 #     Function.plot(x, [func, func2], [params, params2], y=y, rsquared=[rr, rr2])
 #     plt.gcf().savefig("tests/data/plot.pdf")
