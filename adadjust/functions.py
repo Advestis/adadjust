@@ -320,7 +320,7 @@ class Function:
             if yerr is None and xerr is None:
                 ax.scatter(x=x, y=y, c="black", marker=fmt, label=ylabel, s=ms, **plot_kwargs)
             else:
-                ax.errorbar(x=x, y=y, yerr=yerr, xerr=xerr, c="black", fmt=fmt, s=ms, label=ylabel, **plot_kwargs)
+                ax.errorbar(x=x, y=y, yerr=yerr, xerr=xerr, c="black", fmt=fmt, ms=ms, label=ylabel, **plot_kwargs)
 
         if xshow is not None:
             x = xshow
