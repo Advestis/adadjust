@@ -6,6 +6,8 @@ permalink: /docs/index.html
 
 # AdAdjust
 
+Package allowing to fit any mathematical function to (for now 1-D only) data.
+
 
 ## Installation
 
