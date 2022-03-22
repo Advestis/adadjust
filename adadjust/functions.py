@@ -120,6 +120,7 @@ class Function:
         init: np.ndarray,
         yerrup: Optional[np.ndarray] = None,
         yerrdown: Optional[np.ndarray] = None,
+        yerr: Optional[np.ndarray] = None,
         args: tuple = (),
         **kwargs,
     ):
@@ -137,6 +138,8 @@ class Function:
             The upper error of 'y', used to weight the data points
         yerrdown: Optional[np.ndarray]
             The lower error of 'y', used to weight the data points
+        yerr: Optional[np.ndarray]
+            The error of 'y', used to weight the data points. Replaces yerrup and yerrdown.
         args: tuple
             Any additionnal arguments to give to self.method
         **kwargs
@@ -146,14 +149,21 @@ class Function:
         -------
         Same as scipy.optimize.leastsq
         """
+        if yerr is not None and (yerrup is not None or yerrdown is not None):
+            raise ValueError("If yerr is specified, can not specify yerrup or yerrdown too")
+        if (yerrup is not None and yerrdown is None) or (yerrdown is not None and yerrup is None):
+            raise ValueError("If one of yerrup or yerrdown is specified, the other must be too")
+        if yerr is not None:
+            yerrup = yerr
+            yerrdown = -yerr
 
         def my_error(*args_):
             yfit = self(x, *args_)
             weight = np.ones_like(yfit)
+
             if yerrdown is None:
-                if yerrup is None:
-                    return (yfit - y) ** 2
-                weight[yfit > y] = yerrup[yfit > y]
+                return (yfit - y) ** 2
+            weight[yfit > y] = yerrup[yfit > y]
             weight[yfit <= y] = yerrdown[yfit <= y]
             return (yfit - y) ** 2 / weight ** 2
 
