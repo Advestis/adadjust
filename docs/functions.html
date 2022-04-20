@@ -1,0 +1,1374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>adadjust.functions API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>adadjust.functions</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from typing import Callable, Union, Optional, Collection
+from scipy.optimize import leastsq
+import logging
+import numpy as np
+import tablewriter
+import pandas as pd
+import matplotlib.pyplot as plt
+from colorstylecycler import Cycler
+
+logger = logging.getLogger(__name__)
+
+
+class Function:
+    def __init__(self, method: Callable, equation: str):
+
+        &#34;&#34;&#34;
+        Mathematical function to fit on some data.
+        For now, only 1-D functions are supported.
+
+        Examples:
+        &gt;&gt;&gt; from adadjust import Function
+        &gt;&gt;&gt; # noinspection PyShadowingNames
+        &gt;&gt;&gt; import numpy as np
+        &gt;&gt;&gt; # noinspection PyShadowingNames
+        &gt;&gt;&gt; import matplotlib.pyplot as plt
+        &gt;&gt;&gt; plt.rcParams.update({&#34;text.usetex&#34;: True})  # Needs texlive installed
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; nsamples = 1000
+        &gt;&gt;&gt; a = 0.3
+        &gt;&gt;&gt; b = -10
+        &gt;&gt;&gt; xstart = 0
+        &gt;&gt;&gt; xend = 1
+        &gt;&gt;&gt; noise = 0.01
+        &gt;&gt;&gt; x = np.linspace(xstart, xend, nsamples)
+        &gt;&gt;&gt; y = a * x ** 2 + b + np.random.normal(0, noise, nsamples)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; def linfunc(xx, p):
+        &gt;&gt;&gt;     return xx * p[0] + p[1]
+        &gt;&gt;&gt;
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; def square(xx, p):
+        &gt;&gt;&gt;     return xx ** 2 * p[0] + p[1]
+        &gt;&gt;&gt;
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; func = Function(linfunc, &#34;$a \\times p[0] + p[1]$&#34;)
+        &gt;&gt;&gt; func2 = Function(square, &#34;$a^2 \\times p[0] + p[1]$&#34;)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; params = func.fit(x, y, np.array([0, 0]))[0]
+        &gt;&gt;&gt; rr = func.compute_rsquared(x, y, params)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; params2 = func2.fit(x, y, np.array([0, 0]))[0]
+        &gt;&gt;&gt; rr2 = func2.compute_rsquared(x, y, params2)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; table = Function.make_table(
+        &gt;&gt;&gt; [func, func2], [params, params2], [rr, rr2], caption=&#34;Linear and Square fit&#34;, path_output=&#34;table.pdf&#34;
+        &gt;&gt;&gt; )
+        &gt;&gt;&gt; table.compile()
+        &gt;&gt;&gt; Function.plot(x, [func, func2], [params, params2], y=y, rsquared=[rr, rr2])
+        &gt;&gt;&gt; plt.gcf().savefig(&#34;plot.pdf&#34;)
+
+        Parameters
+        ----------
+        method: Callable
+            The function to fit. It must take as first argument the x on which to compute the function, then
+            the adjustable parameters in one tuple, then and any number of additionnal arguments.
+        equation: str
+            The function&#39;s equation in LaTeX, for rendering. Adjustable parameters must be specified through the
+            synthax &#39;p[i]&#39;. For example, a linear function&#39;s equation would be &#39;$p[0] \\times x + p[1]$&#39;.
+        &#34;&#34;&#34;
+        self.method = method
+        self.equation = equation
+
+    def __call__(self, *args):
+        return self.method(*args)
+
+    def make_result_equation(self, params: Union[list, tuple, np.ndarray], r: Optional[float] = None) -&gt; str:
+        &#34;&#34;&#34;From a given set of adjustable parameter values, and an optionnal r² value, replaces the &#39;p[i]&#39; in the
+        function&#39;s equation by their corresponding values in &#39;params&#39;. If r² is specified, will be appended to the
+        equation in a new line.
+
+        Examples:
+        &gt;&gt;&gt; from adadjust import Function
+        &gt;&gt;&gt; def func(x, p):
+        &gt;&gt;&gt;     return p[0] * x + p[1]
+        &gt;&gt;&gt; f = Function(func, &#34;$p[0] \\times x + p[1]$&#34;)
+        &gt;&gt;&gt; res = f.make_result_equation((1, -2), 0.8)
+        &#34;\\setlength{\\parindent}{0cm} $1 \\times x - 2$\\\\$r^2=0.8$&#34;
+
+        Parameters
+        ----------
+        params: Union[list, tuple, np.ndarray]
+        r: Optional[float]
+
+        Returns
+        -------
+        str
+            The equation with values instead of &#39;p[i]&#39;
+        &#34;&#34;&#34;
+        s = self.equation
+        for iparam in range(len(params)):
+            param = params[iparam]
+            if param &lt; 0:
+                s = s.replace(f&#34;+ p[{iparam}]&#34;, format_x(param))
+                s = s.replace(f&#34;+p[{iparam}]&#34;, format_x(param))
+                s = s.replace(f&#34;- p[{iparam}]&#34;, format_x(float(str(param).replace(&#34;-&#34;, &#34;&#34;))))
+                s = s.replace(f&#34;-p[{iparam}]&#34;, format_x(float(str(param).replace(&#34;-&#34;, &#34;&#34;))))
+                s = s.replace(f&#34;p[{iparam}]&#34;, f&#34;({format_x(param)})&#34;)
+            else:
+                s = s.replace(f&#34;p[{iparam}]&#34;, f&#34;{format_x(param)}&#34;)
+        if r is not None:
+            s = f&#34;{s}\\\\$r^2={r}$&#34;
+        s = &#34;&#34;.join([&#34;\\setlength{\\parindent}{0cm} &#34;, s])
+        return s
+
+    def fit(
+        self,
+        x: np.ndarray,
+        y: np.ndarray,
+        init: np.ndarray,
+        yerrup: Optional[np.ndarray] = None,
+        yerrdown: Optional[np.ndarray] = None,
+        yerr: Optional[np.ndarray] = None,
+        args: tuple = (),
+        **kwargs,
+    ):
+        &#34;&#34;&#34;Adjust the function on &#39;x&#39; and &#39;y&#39; by using least square method.
+
+        Parameters
+        ----------
+        x: np.ndarray
+            The coordinates on which to fit
+        y: np.ndarray
+            The results on which to fit
+        init: np.ndarray
+            The initial values of the function&#39;s parameters
+        yerrup: Optional[np.ndarray]
+            The upper error of &#39;y&#39;, used to weight the data points
+        yerrdown: Optional[np.ndarray]
+            The lower error of &#39;y&#39;, used to weight the data points
+        yerr: Optional[np.ndarray]
+            The error of &#39;y&#39;, used to weight the data points. Replaces yerrup and yerrdown.
+        args: tuple
+            Any additionnal arguments to give to self.method
+        **kwargs
+            Any additionnal keyword arguments to pass to scipy.optimize.leastsq
+
+        Returns
+        -------
+        Same as scipy.optimize.leastsq
+        &#34;&#34;&#34;
+        if yerr is not None and (yerrup is not None or yerrdown is not None):
+            raise ValueError(&#34;If yerr is specified, can not specify yerrup or yerrdown too&#34;)
+        if (yerrup is not None and yerrdown is None) or (yerrdown is not None and yerrup is None):
+            raise ValueError(&#34;If one of yerrup or yerrdown is specified, the other must be too&#34;)
+        if yerr is not None:
+            yerrup = yerr
+            yerrdown = -yerr
+
+        def my_error(*args_):
+            yfit = self(x, *args_)
+            weight = np.ones_like(yfit)
+
+            if yerrdown is None:
+                return (yfit - y) ** 2
+            weight[yfit &gt; y] = yerrup[yfit &gt; y]
+            weight[yfit &lt;= y] = yerrdown[yfit &lt;= y]
+            return (yfit - y) ** 2 / weight ** 2
+
+        if len(x) &lt; len(init):
+            logger.warning(&#34;Can not fit a function with less observations than parameters&#34;)
+            return None
+        if len(x) == len(init):
+            logger.warning(&#34;Fitting a function with the same number of observations than parameters&#34;)
+        results = leastsq(my_error, x0=init, args=args, **kwargs)
+        return results
+
+    def predict(self, x: np.ndarray, params: np.ndarray, *args):
+        &#34;&#34;&#34;Same as calling self(x, params, *args)&#34;&#34;&#34;
+        return self.method(x, params, *args)
+
+    def compute_rsquared(self, x: np.ndarray, y: np.ndarray, params: np.ndarray, *args) -&gt; float:
+        &#34;&#34;&#34;Comptue the r² of a fit result.
+
+        r² indicates how much better the fitted parameters are compared to simply predicting the means of &#39;y&#39;. It can be
+        negative if the fit is worse than predicting the mean. If r²=0, the parameters predict the mean of &#39;y&#39;. If
+        r²=1, the fit is perfect (all predicted points perfectly match observations).
+
+        Note that if the mean of &#39;y&#39; also is a perfect fit (i.e, an ohrizontal line), the value of r is not defined for
+        a division by 0 would occur.
+
+        Parameters
+        ----------
+        x: np.ndarray
+            The coordinates on which the fit was done
+        y: np.ndarray
+            The results on which the fit was done
+        params: np.ndarray
+            The fitted values of the function&#39;s parameters
+        *args
+            additionnal arguments to pass to self.method
+
+        Returns
+        -------
+        float
+            r² value
+        &#34;&#34;&#34;
+        rss = np.sum((y - self(x, params, *args)) ** 2)
+        tss = np.sum((y - np.mean(y)) ** 2)
+        rr = 1 - (rss / tss)
+        return rr
+
+    @staticmethod
+    def make_table(
+        functions: Collection[&#34;Function&#34;],
+        params: Collection[np.ndarray],
+        rsquared: Optional[Collection[float]] = None,
+        **table_kwargs,
+    ) -&gt; tablewriter.TableWriter:
+        &#34;&#34;&#34;Create a TableWriter object representing the fit results of several Function objects.
+
+        Parameters
+        ----------
+        functions: Collection[Function]
+            Several Functions fitted on the same data, passed in a collection of any kind.
+        params: Collection[np.ndarray]
+            The fitted parameters of the Functions.
+        rsquared: Optional[Collection[float]]
+            The r²s of the Functions.
+        table_kwargs
+            Any additionnal keyword arguments to give to TableWriter
+
+        Returns
+        -------
+        tablewriter.TableWriter
+        &#34;&#34;&#34;
+        nparams = max([len(par) for par in params])
+        # noinspection PyUnresolvedReferences
+        data = [
+            [format_x(params[if_][ip], True) if ip &lt; nparams else np.nan for ip in range(len(params[if_]))]
+            for if_ in range(len(functions))
+        ]
+
+        table_g = pd.DataFrame(
+            columns=[f&#34;param {i}&#34; for i in range(nparams)], index=[f.equation for f in functions], data=data
+        )
+        if rsquared is not None:
+            s = pd.DataFrame(index=table_g.index, data=rsquared, columns=[&#34;$r^2$&#34;])
+            table_g = pd.concat([table_g, s], axis=1)
+
+        return tablewriter.TableWriter(data=table_g, **table_kwargs)
+
+    @staticmethod
+    def plot(
+        x: np.ndarray,
+        functions: Collection[&#34;Function&#34;],
+        params: Collection[np.ndarray],
+        y: Optional[np.ndarray] = None,
+        ax: Optional[plt.Axes] = None,
+        yerr: Optional[np.ndarray] = None,
+        xerr: Optional[np.ndarray] = None,
+        xshow: Optional[np.ndarray] = None,
+        rsquared: Collection[float] = None,
+        argss: Collection[tuple] = None,
+        **plot_kwargs,
+    ) -&gt; plt.Axes:
+        &#34;&#34;&#34;
+        Plots the result of the fits of several Function.
+
+        Parameters
+        ----------
+        x: np.ndarray
+            The &#39;x&#39; on which the fit was done
+        functions: Collection[Function]
+            A collection of Functions that were fitted on &#39;x&#39;
+        params: Collection[np.ndarray]
+            The fitter parameters of the Functions
+        y: Optional[np.ndarray]
+            The measured &#39;y&#39; values used in the fit.
+        ax: Optional[plt.Axes]
+            The plt.Axes on which to plot. Will use plt.gca() if None.
+        yerr: Optional[np.ndarray]
+            The error on y. See plt.errorbar.
+        xerr: Optional[np.ndarray]
+            The error on x. See plt.errorbar.
+        xshow: Optional[np.ndarray]
+            The values of &#39;x&#39; on which the fitted function should be plotted. If None, uses &#39;x&#39;
+        rsquared: Collection[float]
+            The r² of the fitted Functions
+        argss: Collection[tuple]
+            The additionnal arguments the the fitted Functions
+        **plot_kwargs
+            Any keyword arguments to pass to plot methods.
+            * &#39;lw&#39; will be used for plotting the Functions (default value = 4)
+            * &#39;fmt&#39; or &#39;marker&#39; will be used for plotting &#39;y&#39; vs &#39;x&#39; (default value = &#34;o&#34;)
+            * &#39;s&#39; will be used for plotting &#39;y&#39; vs &#39;x&#39; (default value = 10)
+            * &#39;label&#39; will define the label of &#39;y&#39; vs &#39;x&#39; (default value = &#34;data&#34;)
+            Any other arguments must be valid for plt.scatter, plt.errorbar and plt.plot.
+
+        Returns
+        -------
+        plt.Axes
+        &#34;&#34;&#34;
+        if argss is None:
+            argss = [[] for _ in functions]
+        if ax is None:
+            ax = plt.gca()
+        if rsquared is None:
+            rsquared = [None for _ in functions]
+
+        nitems = len(functions)
+        fmt = plot_kwargs.get(&#34;fmt&#34;, &#34;o&#34;)
+        ms = plot_kwargs.get(&#34;s&#34;, 10)
+        lw = plot_kwargs.get(&#34;lw&#34;, 4)
+        ylabel = plot_kwargs.get(&#34;label&#34;, &#34;data&#34;)
+
+        if &#34;fmt&#34; in plot_kwargs:
+            del plot_kwargs[&#34;fmt&#34;]
+        if &#34;s&#34; in plot_kwargs:
+            del plot_kwargs[&#34;s&#34;]
+        if &#34;lw&#34; in plot_kwargs:
+            del plot_kwargs[&#34;lw&#34;]
+        if &#34;label&#34; in plot_kwargs:
+            del plot_kwargs[&#34;label&#34;]
+
+        cycler = Cycler(ncurves=nitems, color_start=&#34;darkred&#34;, color_end=&#34;darkblue&#34;)
+        plt.rc(&#34;axes&#34;, prop_cycle=cycler.cycler)
+
+        if y is not None:
+            if yerr is None and xerr is None:
+                ax.scatter(x=x, y=y, c=&#34;black&#34;, marker=fmt, label=ylabel, s=ms, **plot_kwargs)
+            else:
+                ax.errorbar(x=x, y=y, yerr=yerr, xerr=xerr, c=&#34;black&#34;, fmt=fmt, ms=ms, label=ylabel, **plot_kwargs)
+
+        if xshow is not None:
+            x = xshow
+        for function, param, r, args in zip(functions, params, rsquared, argss):
+            ax.plot(
+                x,
+                function(x, param, *args),
+                label=function.make_result_equation(param, r),
+                lw=lw,
+                **plot_kwargs,
+            )
+        ax.legend()
+        return ax
+
+
+def format_x(s: Union[float, int], with_dollar: bool = False) -&gt; str:
+    &#34;&#34;&#34;For a given number, will put it in scientific notation if its absolute value is lower than 0.01 and greater than,
+    1000 using LaTex synthax. If &#39;with_dollar&#39; is True and if s is in LaTeX synthax, will return $2.0\\cdot 10^{3}$
+    instead of 2.0\\cdot 10^{3}.
+
+    Parameters
+    ----------
+    s: Union[float, int]
+    with_dollar: bool
+        Default to False
+
+    Returns
+    -------
+    str
+    &#34;&#34;&#34;
+    if 1000 &gt; abs(s) &gt; 0.01:
+        xstr = str(round(s, 2))
+    else:
+        xstr = &#34;{:.4E}&#34;.format(s)
+        if &#34;E-&#34; in xstr:
+            lead, tail = xstr.split(&#34;E-&#34;)
+            middle = &#34;-&#34;
+        else:
+            lead, tail = xstr.split(&#34;E&#34;)
+            middle = &#34;&#34;
+        lead = round(float(lead), 2)
+        tail = round(float(tail), 2)
+        if with_dollar:
+            xstr = (&#34;$\\cdot 10^{&#34; + middle).join([str(lead), str(tail)]) + &#34;}$&#34;
+        else:
+            xstr = (&#34;\\cdot 10^{&#34; + middle).join([str(lead), str(tail)]) + &#34;}&#34;
+    return xstr</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="adadjust.functions.format_x"><code class="name flex">
+<span>def <span class="ident">format_x</span></span>(<span>s: Union[float, int], with_dollar: bool = False) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>For a given number, will put it in scientific notation if its absolute value is lower than 0.01 and greater than,
+1000 using LaTex synthax. If 'with_dollar' is True and if s is in LaTeX synthax, will return $2.0\cdot 10^{3}$
+instead of 2.0\cdot 10^{3}.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>s</code></strong> :&ensp;<code>Union[float, int]</code></dt>
+<dd>&nbsp;</dd>
+<dt><strong><code>with_dollar</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Default to False</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def format_x(s: Union[float, int], with_dollar: bool = False) -&gt; str:
+    &#34;&#34;&#34;For a given number, will put it in scientific notation if its absolute value is lower than 0.01 and greater than,
+    1000 using LaTex synthax. If &#39;with_dollar&#39; is True and if s is in LaTeX synthax, will return $2.0\\cdot 10^{3}$
+    instead of 2.0\\cdot 10^{3}.
+
+    Parameters
+    ----------
+    s: Union[float, int]
+    with_dollar: bool
+        Default to False
+
+    Returns
+    -------
+    str
+    &#34;&#34;&#34;
+    if 1000 &gt; abs(s) &gt; 0.01:
+        xstr = str(round(s, 2))
+    else:
+        xstr = &#34;{:.4E}&#34;.format(s)
+        if &#34;E-&#34; in xstr:
+            lead, tail = xstr.split(&#34;E-&#34;)
+            middle = &#34;-&#34;
+        else:
+            lead, tail = xstr.split(&#34;E&#34;)
+            middle = &#34;&#34;
+        lead = round(float(lead), 2)
+        tail = round(float(tail), 2)
+        if with_dollar:
+            xstr = (&#34;$\\cdot 10^{&#34; + middle).join([str(lead), str(tail)]) + &#34;}$&#34;
+        else:
+            xstr = (&#34;\\cdot 10^{&#34; + middle).join([str(lead), str(tail)]) + &#34;}&#34;
+    return xstr</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="adadjust.functions.Function"><code class="flex name class">
+<span>class <span class="ident">Function</span></span>
+<span>(</span><span>method: Callable, equation: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Mathematical function to fit on some data.
+For now, only 1-D functions are supported.</p>
+<p>Examples:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; from adadjust import Function
+&gt;&gt;&gt; # noinspection PyShadowingNames
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; # noinspection PyShadowingNames
+&gt;&gt;&gt; import matplotlib.pyplot as plt
+&gt;&gt;&gt; plt.rcParams.update({&quot;text.usetex&quot;: True})  # Needs texlive installed
+&gt;&gt;&gt;
+&gt;&gt;&gt; nsamples = 1000
+&gt;&gt;&gt; a = 0.3
+&gt;&gt;&gt; b = -10
+&gt;&gt;&gt; xstart = 0
+&gt;&gt;&gt; xend = 1
+&gt;&gt;&gt; noise = 0.01
+&gt;&gt;&gt; x = np.linspace(xstart, xend, nsamples)
+&gt;&gt;&gt; y = a * x ** 2 + b + np.random.normal(0, noise, nsamples)
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; def linfunc(xx, p):
+&gt;&gt;&gt;     return xx * p[0] + p[1]
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; def square(xx, p):
+&gt;&gt;&gt;     return xx ** 2 * p[0] + p[1]
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; func = Function(linfunc, &quot;$a \times p[0] + p[1]$&quot;)
+&gt;&gt;&gt; func2 = Function(square, &quot;$a^2 \times p[0] + p[1]$&quot;)
+&gt;&gt;&gt;
+&gt;&gt;&gt; params = func.fit(x, y, np.array([0, 0]))[0]
+&gt;&gt;&gt; rr = func.compute_rsquared(x, y, params)
+&gt;&gt;&gt;
+&gt;&gt;&gt; params2 = func2.fit(x, y, np.array([0, 0]))[0]
+&gt;&gt;&gt; rr2 = func2.compute_rsquared(x, y, params2)
+&gt;&gt;&gt;
+&gt;&gt;&gt; table = Function.make_table(
+&gt;&gt;&gt; [func, func2], [params, params2], [rr, rr2], caption=&quot;Linear and Square fit&quot;, path_output=&quot;table.pdf&quot;
+&gt;&gt;&gt; )
+&gt;&gt;&gt; table.compile()
+&gt;&gt;&gt; Function.plot(x, [func, func2], [params, params2], y=y, rsquared=[rr, rr2])
+&gt;&gt;&gt; plt.gcf().savefig(&quot;plot.pdf&quot;)
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>method</code></strong> :&ensp;<code>Callable</code></dt>
+<dd>The function to fit. It must take as first argument the x on which to compute the function, then
+the adjustable parameters in one tuple, then and any number of additionnal arguments.</dd>
+<dt><strong><code>equation</code></strong> :&ensp;<code>str</code></dt>
+<dd>The function's equation in LaTeX, for rendering. Adjustable parameters must be specified through the
+synthax 'p[i]'. For example, a linear function's equation would be '$p[0] \times x + p[1]$'.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Function:
+    def __init__(self, method: Callable, equation: str):
+
+        &#34;&#34;&#34;
+        Mathematical function to fit on some data.
+        For now, only 1-D functions are supported.
+
+        Examples:
+        &gt;&gt;&gt; from adadjust import Function
+        &gt;&gt;&gt; # noinspection PyShadowingNames
+        &gt;&gt;&gt; import numpy as np
+        &gt;&gt;&gt; # noinspection PyShadowingNames
+        &gt;&gt;&gt; import matplotlib.pyplot as plt
+        &gt;&gt;&gt; plt.rcParams.update({&#34;text.usetex&#34;: True})  # Needs texlive installed
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; nsamples = 1000
+        &gt;&gt;&gt; a = 0.3
+        &gt;&gt;&gt; b = -10
+        &gt;&gt;&gt; xstart = 0
+        &gt;&gt;&gt; xend = 1
+        &gt;&gt;&gt; noise = 0.01
+        &gt;&gt;&gt; x = np.linspace(xstart, xend, nsamples)
+        &gt;&gt;&gt; y = a * x ** 2 + b + np.random.normal(0, noise, nsamples)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; def linfunc(xx, p):
+        &gt;&gt;&gt;     return xx * p[0] + p[1]
+        &gt;&gt;&gt;
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; def square(xx, p):
+        &gt;&gt;&gt;     return xx ** 2 * p[0] + p[1]
+        &gt;&gt;&gt;
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; func = Function(linfunc, &#34;$a \\times p[0] + p[1]$&#34;)
+        &gt;&gt;&gt; func2 = Function(square, &#34;$a^2 \\times p[0] + p[1]$&#34;)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; params = func.fit(x, y, np.array([0, 0]))[0]
+        &gt;&gt;&gt; rr = func.compute_rsquared(x, y, params)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; params2 = func2.fit(x, y, np.array([0, 0]))[0]
+        &gt;&gt;&gt; rr2 = func2.compute_rsquared(x, y, params2)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; table = Function.make_table(
+        &gt;&gt;&gt; [func, func2], [params, params2], [rr, rr2], caption=&#34;Linear and Square fit&#34;, path_output=&#34;table.pdf&#34;
+        &gt;&gt;&gt; )
+        &gt;&gt;&gt; table.compile()
+        &gt;&gt;&gt; Function.plot(x, [func, func2], [params, params2], y=y, rsquared=[rr, rr2])
+        &gt;&gt;&gt; plt.gcf().savefig(&#34;plot.pdf&#34;)
+
+        Parameters
+        ----------
+        method: Callable
+            The function to fit. It must take as first argument the x on which to compute the function, then
+            the adjustable parameters in one tuple, then and any number of additionnal arguments.
+        equation: str
+            The function&#39;s equation in LaTeX, for rendering. Adjustable parameters must be specified through the
+            synthax &#39;p[i]&#39;. For example, a linear function&#39;s equation would be &#39;$p[0] \\times x + p[1]$&#39;.
+        &#34;&#34;&#34;
+        self.method = method
+        self.equation = equation
+
+    def __call__(self, *args):
+        return self.method(*args)
+
+    def make_result_equation(self, params: Union[list, tuple, np.ndarray], r: Optional[float] = None) -&gt; str:
+        &#34;&#34;&#34;From a given set of adjustable parameter values, and an optionnal r² value, replaces the &#39;p[i]&#39; in the
+        function&#39;s equation by their corresponding values in &#39;params&#39;. If r² is specified, will be appended to the
+        equation in a new line.
+
+        Examples:
+        &gt;&gt;&gt; from adadjust import Function
+        &gt;&gt;&gt; def func(x, p):
+        &gt;&gt;&gt;     return p[0] * x + p[1]
+        &gt;&gt;&gt; f = Function(func, &#34;$p[0] \\times x + p[1]$&#34;)
+        &gt;&gt;&gt; res = f.make_result_equation((1, -2), 0.8)
+        &#34;\\setlength{\\parindent}{0cm} $1 \\times x - 2$\\\\$r^2=0.8$&#34;
+
+        Parameters
+        ----------
+        params: Union[list, tuple, np.ndarray]
+        r: Optional[float]
+
+        Returns
+        -------
+        str
+            The equation with values instead of &#39;p[i]&#39;
+        &#34;&#34;&#34;
+        s = self.equation
+        for iparam in range(len(params)):
+            param = params[iparam]
+            if param &lt; 0:
+                s = s.replace(f&#34;+ p[{iparam}]&#34;, format_x(param))
+                s = s.replace(f&#34;+p[{iparam}]&#34;, format_x(param))
+                s = s.replace(f&#34;- p[{iparam}]&#34;, format_x(float(str(param).replace(&#34;-&#34;, &#34;&#34;))))
+                s = s.replace(f&#34;-p[{iparam}]&#34;, format_x(float(str(param).replace(&#34;-&#34;, &#34;&#34;))))
+                s = s.replace(f&#34;p[{iparam}]&#34;, f&#34;({format_x(param)})&#34;)
+            else:
+                s = s.replace(f&#34;p[{iparam}]&#34;, f&#34;{format_x(param)}&#34;)
+        if r is not None:
+            s = f&#34;{s}\\\\$r^2={r}$&#34;
+        s = &#34;&#34;.join([&#34;\\setlength{\\parindent}{0cm} &#34;, s])
+        return s
+
+    def fit(
+        self,
+        x: np.ndarray,
+        y: np.ndarray,
+        init: np.ndarray,
+        yerrup: Optional[np.ndarray] = None,
+        yerrdown: Optional[np.ndarray] = None,
+        yerr: Optional[np.ndarray] = None,
+        args: tuple = (),
+        **kwargs,
+    ):
+        &#34;&#34;&#34;Adjust the function on &#39;x&#39; and &#39;y&#39; by using least square method.
+
+        Parameters
+        ----------
+        x: np.ndarray
+            The coordinates on which to fit
+        y: np.ndarray
+            The results on which to fit
+        init: np.ndarray
+            The initial values of the function&#39;s parameters
+        yerrup: Optional[np.ndarray]
+            The upper error of &#39;y&#39;, used to weight the data points
+        yerrdown: Optional[np.ndarray]
+            The lower error of &#39;y&#39;, used to weight the data points
+        yerr: Optional[np.ndarray]
+            The error of &#39;y&#39;, used to weight the data points. Replaces yerrup and yerrdown.
+        args: tuple
+            Any additionnal arguments to give to self.method
+        **kwargs
+            Any additionnal keyword arguments to pass to scipy.optimize.leastsq
+
+        Returns
+        -------
+        Same as scipy.optimize.leastsq
+        &#34;&#34;&#34;
+        if yerr is not None and (yerrup is not None or yerrdown is not None):
+            raise ValueError(&#34;If yerr is specified, can not specify yerrup or yerrdown too&#34;)
+        if (yerrup is not None and yerrdown is None) or (yerrdown is not None and yerrup is None):
+            raise ValueError(&#34;If one of yerrup or yerrdown is specified, the other must be too&#34;)
+        if yerr is not None:
+            yerrup = yerr
+            yerrdown = -yerr
+
+        def my_error(*args_):
+            yfit = self(x, *args_)
+            weight = np.ones_like(yfit)
+
+            if yerrdown is None:
+                return (yfit - y) ** 2
+            weight[yfit &gt; y] = yerrup[yfit &gt; y]
+            weight[yfit &lt;= y] = yerrdown[yfit &lt;= y]
+            return (yfit - y) ** 2 / weight ** 2
+
+        if len(x) &lt; len(init):
+            logger.warning(&#34;Can not fit a function with less observations than parameters&#34;)
+            return None
+        if len(x) == len(init):
+            logger.warning(&#34;Fitting a function with the same number of observations than parameters&#34;)
+        results = leastsq(my_error, x0=init, args=args, **kwargs)
+        return results
+
+    def predict(self, x: np.ndarray, params: np.ndarray, *args):
+        &#34;&#34;&#34;Same as calling self(x, params, *args)&#34;&#34;&#34;
+        return self.method(x, params, *args)
+
+    def compute_rsquared(self, x: np.ndarray, y: np.ndarray, params: np.ndarray, *args) -&gt; float:
+        &#34;&#34;&#34;Comptue the r² of a fit result.
+
+        r² indicates how much better the fitted parameters are compared to simply predicting the means of &#39;y&#39;. It can be
+        negative if the fit is worse than predicting the mean. If r²=0, the parameters predict the mean of &#39;y&#39;. If
+        r²=1, the fit is perfect (all predicted points perfectly match observations).
+
+        Note that if the mean of &#39;y&#39; also is a perfect fit (i.e, an ohrizontal line), the value of r is not defined for
+        a division by 0 would occur.
+
+        Parameters
+        ----------
+        x: np.ndarray
+            The coordinates on which the fit was done
+        y: np.ndarray
+            The results on which the fit was done
+        params: np.ndarray
+            The fitted values of the function&#39;s parameters
+        *args
+            additionnal arguments to pass to self.method
+
+        Returns
+        -------
+        float
+            r² value
+        &#34;&#34;&#34;
+        rss = np.sum((y - self(x, params, *args)) ** 2)
+        tss = np.sum((y - np.mean(y)) ** 2)
+        rr = 1 - (rss / tss)
+        return rr
+
+    @staticmethod
+    def make_table(
+        functions: Collection[&#34;Function&#34;],
+        params: Collection[np.ndarray],
+        rsquared: Optional[Collection[float]] = None,
+        **table_kwargs,
+    ) -&gt; tablewriter.TableWriter:
+        &#34;&#34;&#34;Create a TableWriter object representing the fit results of several Function objects.
+
+        Parameters
+        ----------
+        functions: Collection[Function]
+            Several Functions fitted on the same data, passed in a collection of any kind.
+        params: Collection[np.ndarray]
+            The fitted parameters of the Functions.
+        rsquared: Optional[Collection[float]]
+            The r²s of the Functions.
+        table_kwargs
+            Any additionnal keyword arguments to give to TableWriter
+
+        Returns
+        -------
+        tablewriter.TableWriter
+        &#34;&#34;&#34;
+        nparams = max([len(par) for par in params])
+        # noinspection PyUnresolvedReferences
+        data = [
+            [format_x(params[if_][ip], True) if ip &lt; nparams else np.nan for ip in range(len(params[if_]))]
+            for if_ in range(len(functions))
+        ]
+
+        table_g = pd.DataFrame(
+            columns=[f&#34;param {i}&#34; for i in range(nparams)], index=[f.equation for f in functions], data=data
+        )
+        if rsquared is not None:
+            s = pd.DataFrame(index=table_g.index, data=rsquared, columns=[&#34;$r^2$&#34;])
+            table_g = pd.concat([table_g, s], axis=1)
+
+        return tablewriter.TableWriter(data=table_g, **table_kwargs)
+
+    @staticmethod
+    def plot(
+        x: np.ndarray,
+        functions: Collection[&#34;Function&#34;],
+        params: Collection[np.ndarray],
+        y: Optional[np.ndarray] = None,
+        ax: Optional[plt.Axes] = None,
+        yerr: Optional[np.ndarray] = None,
+        xerr: Optional[np.ndarray] = None,
+        xshow: Optional[np.ndarray] = None,
+        rsquared: Collection[float] = None,
+        argss: Collection[tuple] = None,
+        **plot_kwargs,
+    ) -&gt; plt.Axes:
+        &#34;&#34;&#34;
+        Plots the result of the fits of several Function.
+
+        Parameters
+        ----------
+        x: np.ndarray
+            The &#39;x&#39; on which the fit was done
+        functions: Collection[Function]
+            A collection of Functions that were fitted on &#39;x&#39;
+        params: Collection[np.ndarray]
+            The fitter parameters of the Functions
+        y: Optional[np.ndarray]
+            The measured &#39;y&#39; values used in the fit.
+        ax: Optional[plt.Axes]
+            The plt.Axes on which to plot. Will use plt.gca() if None.
+        yerr: Optional[np.ndarray]
+            The error on y. See plt.errorbar.
+        xerr: Optional[np.ndarray]
+            The error on x. See plt.errorbar.
+        xshow: Optional[np.ndarray]
+            The values of &#39;x&#39; on which the fitted function should be plotted. If None, uses &#39;x&#39;
+        rsquared: Collection[float]
+            The r² of the fitted Functions
+        argss: Collection[tuple]
+            The additionnal arguments the the fitted Functions
+        **plot_kwargs
+            Any keyword arguments to pass to plot methods.
+            * &#39;lw&#39; will be used for plotting the Functions (default value = 4)
+            * &#39;fmt&#39; or &#39;marker&#39; will be used for plotting &#39;y&#39; vs &#39;x&#39; (default value = &#34;o&#34;)
+            * &#39;s&#39; will be used for plotting &#39;y&#39; vs &#39;x&#39; (default value = 10)
+            * &#39;label&#39; will define the label of &#39;y&#39; vs &#39;x&#39; (default value = &#34;data&#34;)
+            Any other arguments must be valid for plt.scatter, plt.errorbar and plt.plot.
+
+        Returns
+        -------
+        plt.Axes
+        &#34;&#34;&#34;
+        if argss is None:
+            argss = [[] for _ in functions]
+        if ax is None:
+            ax = plt.gca()
+        if rsquared is None:
+            rsquared = [None for _ in functions]
+
+        nitems = len(functions)
+        fmt = plot_kwargs.get(&#34;fmt&#34;, &#34;o&#34;)
+        ms = plot_kwargs.get(&#34;s&#34;, 10)
+        lw = plot_kwargs.get(&#34;lw&#34;, 4)
+        ylabel = plot_kwargs.get(&#34;label&#34;, &#34;data&#34;)
+
+        if &#34;fmt&#34; in plot_kwargs:
+            del plot_kwargs[&#34;fmt&#34;]
+        if &#34;s&#34; in plot_kwargs:
+            del plot_kwargs[&#34;s&#34;]
+        if &#34;lw&#34; in plot_kwargs:
+            del plot_kwargs[&#34;lw&#34;]
+        if &#34;label&#34; in plot_kwargs:
+            del plot_kwargs[&#34;label&#34;]
+
+        cycler = Cycler(ncurves=nitems, color_start=&#34;darkred&#34;, color_end=&#34;darkblue&#34;)
+        plt.rc(&#34;axes&#34;, prop_cycle=cycler.cycler)
+
+        if y is not None:
+            if yerr is None and xerr is None:
+                ax.scatter(x=x, y=y, c=&#34;black&#34;, marker=fmt, label=ylabel, s=ms, **plot_kwargs)
+            else:
+                ax.errorbar(x=x, y=y, yerr=yerr, xerr=xerr, c=&#34;black&#34;, fmt=fmt, ms=ms, label=ylabel, **plot_kwargs)
+
+        if xshow is not None:
+            x = xshow
+        for function, param, r, args in zip(functions, params, rsquared, argss):
+            ax.plot(
+                x,
+                function(x, param, *args),
+                label=function.make_result_equation(param, r),
+                lw=lw,
+                **plot_kwargs,
+            )
+        ax.legend()
+        return ax</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="adadjust.functions.Function.make_table"><code class="name flex">
+<span>def <span class="ident">make_table</span></span>(<span>functions: Collection[ForwardRef('<a title="adadjust.functions.Function" href="#adadjust.functions.Function">Function</a>')], params: Collection[numpy.ndarray], rsquared: Optional[Collection[float]] = None, **table_kwargs) ‑> tablewriter.tablewriter.TableWriter</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a TableWriter object representing the fit results of several Function objects.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>functions</code></strong> :&ensp;<code>Collection[<a title="adadjust.functions.Function" href="#adadjust.functions.Function">Function</a>]</code></dt>
+<dd>Several Functions fitted on the same data, passed in a collection of any kind.</dd>
+<dt><strong><code>params</code></strong> :&ensp;<code>Collection[np.ndarray]</code></dt>
+<dd>The fitted parameters of the Functions.</dd>
+<dt><strong><code>rsquared</code></strong> :&ensp;<code>Optional[Collection[float]]</code></dt>
+<dd>The r²s of the Functions.</dd>
+<dt><strong><code>table_kwargs</code></strong></dt>
+<dd>Any additionnal keyword arguments to give to TableWriter</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tablewriter.TableWriter</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def make_table(
+    functions: Collection[&#34;Function&#34;],
+    params: Collection[np.ndarray],
+    rsquared: Optional[Collection[float]] = None,
+    **table_kwargs,
+) -&gt; tablewriter.TableWriter:
+    &#34;&#34;&#34;Create a TableWriter object representing the fit results of several Function objects.
+
+    Parameters
+    ----------
+    functions: Collection[Function]
+        Several Functions fitted on the same data, passed in a collection of any kind.
+    params: Collection[np.ndarray]
+        The fitted parameters of the Functions.
+    rsquared: Optional[Collection[float]]
+        The r²s of the Functions.
+    table_kwargs
+        Any additionnal keyword arguments to give to TableWriter
+
+    Returns
+    -------
+    tablewriter.TableWriter
+    &#34;&#34;&#34;
+    nparams = max([len(par) for par in params])
+    # noinspection PyUnresolvedReferences
+    data = [
+        [format_x(params[if_][ip], True) if ip &lt; nparams else np.nan for ip in range(len(params[if_]))]
+        for if_ in range(len(functions))
+    ]
+
+    table_g = pd.DataFrame(
+        columns=[f&#34;param {i}&#34; for i in range(nparams)], index=[f.equation for f in functions], data=data
+    )
+    if rsquared is not None:
+        s = pd.DataFrame(index=table_g.index, data=rsquared, columns=[&#34;$r^2$&#34;])
+        table_g = pd.concat([table_g, s], axis=1)
+
+    return tablewriter.TableWriter(data=table_g, **table_kwargs)</code></pre>
+</details>
+</dd>
+<dt id="adadjust.functions.Function.plot"><code class="name flex">
+<span>def <span class="ident">plot</span></span>(<span>x: numpy.ndarray, functions: Collection[ForwardRef('<a title="adadjust.functions.Function" href="#adadjust.functions.Function">Function</a>')], params: Collection[numpy.ndarray], y: Optional[numpy.ndarray] = None, ax: Optional[matplotlib.axes._axes.Axes] = None, yerr: Optional[numpy.ndarray] = None, xerr: Optional[numpy.ndarray] = None, xshow: Optional[numpy.ndarray] = None, rsquared: Collection[float] = None, argss: Collection[tuple] = None, **plot_kwargs) ‑> matplotlib.axes._axes.Axes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots the result of the fits of several Function.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The 'x' on which the fit was done</dd>
+<dt><strong><code>functions</code></strong> :&ensp;<code>Collection[<a title="adadjust.functions.Function" href="#adadjust.functions.Function">Function</a>]</code></dt>
+<dd>A collection of Functions that were fitted on 'x'</dd>
+<dt><strong><code>params</code></strong> :&ensp;<code>Collection[np.ndarray]</code></dt>
+<dd>The fitter parameters of the Functions</dd>
+<dt><strong><code>y</code></strong> :&ensp;<code>Optional[np.ndarray]</code></dt>
+<dd>The measured 'y' values used in the fit.</dd>
+<dt><strong><code>ax</code></strong> :&ensp;<code>Optional[plt.Axes]</code></dt>
+<dd>The plt.Axes on which to plot. Will use plt.gca() if None.</dd>
+<dt><strong><code>yerr</code></strong> :&ensp;<code>Optional[np.ndarray]</code></dt>
+<dd>The error on y. See plt.errorbar.</dd>
+<dt><strong><code>xerr</code></strong> :&ensp;<code>Optional[np.ndarray]</code></dt>
+<dd>The error on x. See plt.errorbar.</dd>
+<dt><strong><code>xshow</code></strong> :&ensp;<code>Optional[np.ndarray]</code></dt>
+<dd>The values of 'x' on which the fitted function should be plotted. If None, uses 'x'</dd>
+<dt><strong><code>rsquared</code></strong> :&ensp;<code>Collection[float]</code></dt>
+<dd>The r² of the fitted Functions</dd>
+<dt><strong><code>argss</code></strong> :&ensp;<code>Collection[tuple]</code></dt>
+<dd>The additionnal arguments the the fitted Functions</dd>
+<dt><strong><code>**plot_kwargs</code></strong></dt>
+<dd>Any keyword arguments to pass to plot methods.
+* 'lw' will be used for plotting the Functions (default value = 4)
+* 'fmt' or 'marker' will be used for plotting 'y' vs 'x' (default value = "o")
+* 's' will be used for plotting 'y' vs 'x' (default value = 10)
+* 'label' will define the label of 'y' vs 'x' (default value = "data")
+Any other arguments must be valid for plt.scatter, plt.errorbar and plt.plot.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>plt.Axes</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def plot(
+    x: np.ndarray,
+    functions: Collection[&#34;Function&#34;],
+    params: Collection[np.ndarray],
+    y: Optional[np.ndarray] = None,
+    ax: Optional[plt.Axes] = None,
+    yerr: Optional[np.ndarray] = None,
+    xerr: Optional[np.ndarray] = None,
+    xshow: Optional[np.ndarray] = None,
+    rsquared: Collection[float] = None,
+    argss: Collection[tuple] = None,
+    **plot_kwargs,
+) -&gt; plt.Axes:
+    &#34;&#34;&#34;
+    Plots the result of the fits of several Function.
+
+    Parameters
+    ----------
+    x: np.ndarray
+        The &#39;x&#39; on which the fit was done
+    functions: Collection[Function]
+        A collection of Functions that were fitted on &#39;x&#39;
+    params: Collection[np.ndarray]
+        The fitter parameters of the Functions
+    y: Optional[np.ndarray]
+        The measured &#39;y&#39; values used in the fit.
+    ax: Optional[plt.Axes]
+        The plt.Axes on which to plot. Will use plt.gca() if None.
+    yerr: Optional[np.ndarray]
+        The error on y. See plt.errorbar.
+    xerr: Optional[np.ndarray]
+        The error on x. See plt.errorbar.
+    xshow: Optional[np.ndarray]
+        The values of &#39;x&#39; on which the fitted function should be plotted. If None, uses &#39;x&#39;
+    rsquared: Collection[float]
+        The r² of the fitted Functions
+    argss: Collection[tuple]
+        The additionnal arguments the the fitted Functions
+    **plot_kwargs
+        Any keyword arguments to pass to plot methods.
+        * &#39;lw&#39; will be used for plotting the Functions (default value = 4)
+        * &#39;fmt&#39; or &#39;marker&#39; will be used for plotting &#39;y&#39; vs &#39;x&#39; (default value = &#34;o&#34;)
+        * &#39;s&#39; will be used for plotting &#39;y&#39; vs &#39;x&#39; (default value = 10)
+        * &#39;label&#39; will define the label of &#39;y&#39; vs &#39;x&#39; (default value = &#34;data&#34;)
+        Any other arguments must be valid for plt.scatter, plt.errorbar and plt.plot.
+
+    Returns
+    -------
+    plt.Axes
+    &#34;&#34;&#34;
+    if argss is None:
+        argss = [[] for _ in functions]
+    if ax is None:
+        ax = plt.gca()
+    if rsquared is None:
+        rsquared = [None for _ in functions]
+
+    nitems = len(functions)
+    fmt = plot_kwargs.get(&#34;fmt&#34;, &#34;o&#34;)
+    ms = plot_kwargs.get(&#34;s&#34;, 10)
+    lw = plot_kwargs.get(&#34;lw&#34;, 4)
+    ylabel = plot_kwargs.get(&#34;label&#34;, &#34;data&#34;)
+
+    if &#34;fmt&#34; in plot_kwargs:
+        del plot_kwargs[&#34;fmt&#34;]
+    if &#34;s&#34; in plot_kwargs:
+        del plot_kwargs[&#34;s&#34;]
+    if &#34;lw&#34; in plot_kwargs:
+        del plot_kwargs[&#34;lw&#34;]
+    if &#34;label&#34; in plot_kwargs:
+        del plot_kwargs[&#34;label&#34;]
+
+    cycler = Cycler(ncurves=nitems, color_start=&#34;darkred&#34;, color_end=&#34;darkblue&#34;)
+    plt.rc(&#34;axes&#34;, prop_cycle=cycler.cycler)
+
+    if y is not None:
+        if yerr is None and xerr is None:
+            ax.scatter(x=x, y=y, c=&#34;black&#34;, marker=fmt, label=ylabel, s=ms, **plot_kwargs)
+        else:
+            ax.errorbar(x=x, y=y, yerr=yerr, xerr=xerr, c=&#34;black&#34;, fmt=fmt, ms=ms, label=ylabel, **plot_kwargs)
+
+    if xshow is not None:
+        x = xshow
+    for function, param, r, args in zip(functions, params, rsquared, argss):
+        ax.plot(
+            x,
+            function(x, param, *args),
+            label=function.make_result_equation(param, r),
+            lw=lw,
+            **plot_kwargs,
+        )
+    ax.legend()
+    return ax</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="adadjust.functions.Function.compute_rsquared"><code class="name flex">
+<span>def <span class="ident">compute_rsquared</span></span>(<span>self, x: numpy.ndarray, y: numpy.ndarray, params: numpy.ndarray, *args) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Comptue the r² of a fit result.</p>
+<p>r² indicates how much better the fitted parameters are compared to simply predicting the means of 'y'. It can be
+negative if the fit is worse than predicting the mean. If r²=0, the parameters predict the mean of 'y'. If
+r²=1, the fit is perfect (all predicted points perfectly match observations).</p>
+<p>Note that if the mean of 'y' also is a perfect fit (i.e, an ohrizontal line), the value of r is not defined for
+a division by 0 would occur.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The coordinates on which the fit was done</dd>
+<dt><strong><code>y</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The results on which the fit was done</dd>
+<dt><strong><code>params</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The fitted values of the function's parameters</dd>
+<dt><strong><code>*args</code></strong></dt>
+<dd>additionnal arguments to pass to self.method</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>r² value</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_rsquared(self, x: np.ndarray, y: np.ndarray, params: np.ndarray, *args) -&gt; float:
+    &#34;&#34;&#34;Comptue the r² of a fit result.
+
+    r² indicates how much better the fitted parameters are compared to simply predicting the means of &#39;y&#39;. It can be
+    negative if the fit is worse than predicting the mean. If r²=0, the parameters predict the mean of &#39;y&#39;. If
+    r²=1, the fit is perfect (all predicted points perfectly match observations).
+
+    Note that if the mean of &#39;y&#39; also is a perfect fit (i.e, an ohrizontal line), the value of r is not defined for
+    a division by 0 would occur.
+
+    Parameters
+    ----------
+    x: np.ndarray
+        The coordinates on which the fit was done
+    y: np.ndarray
+        The results on which the fit was done
+    params: np.ndarray
+        The fitted values of the function&#39;s parameters
+    *args
+        additionnal arguments to pass to self.method
+
+    Returns
+    -------
+    float
+        r² value
+    &#34;&#34;&#34;
+    rss = np.sum((y - self(x, params, *args)) ** 2)
+    tss = np.sum((y - np.mean(y)) ** 2)
+    rr = 1 - (rss / tss)
+    return rr</code></pre>
+</details>
+</dd>
+<dt id="adadjust.functions.Function.fit"><code class="name flex">
+<span>def <span class="ident">fit</span></span>(<span>self, x: numpy.ndarray, y: numpy.ndarray, init: numpy.ndarray, yerrup: Optional[numpy.ndarray] = None, yerrdown: Optional[numpy.ndarray] = None, yerr: Optional[numpy.ndarray] = None, args: tuple = (), **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adjust the function on 'x' and 'y' by using least square method.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The coordinates on which to fit</dd>
+<dt><strong><code>y</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The results on which to fit</dd>
+<dt><strong><code>init</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The initial values of the function's parameters</dd>
+<dt><strong><code>yerrup</code></strong> :&ensp;<code>Optional[np.ndarray]</code></dt>
+<dd>The upper error of 'y', used to weight the data points</dd>
+<dt><strong><code>yerrdown</code></strong> :&ensp;<code>Optional[np.ndarray]</code></dt>
+<dd>The lower error of 'y', used to weight the data points</dd>
+<dt><strong><code>yerr</code></strong> :&ensp;<code>Optional[np.ndarray]</code></dt>
+<dd>The error of 'y', used to weight the data points. Replaces yerrup and yerrdown.</dd>
+<dt><strong><code>args</code></strong> :&ensp;<code>tuple</code></dt>
+<dd>Any additionnal arguments to give to self.method</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>Any additionnal keyword arguments to pass to scipy.optimize.leastsq</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Same as scipy.optimize.leastsq</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fit(
+    self,
+    x: np.ndarray,
+    y: np.ndarray,
+    init: np.ndarray,
+    yerrup: Optional[np.ndarray] = None,
+    yerrdown: Optional[np.ndarray] = None,
+    yerr: Optional[np.ndarray] = None,
+    args: tuple = (),
+    **kwargs,
+):
+    &#34;&#34;&#34;Adjust the function on &#39;x&#39; and &#39;y&#39; by using least square method.
+
+    Parameters
+    ----------
+    x: np.ndarray
+        The coordinates on which to fit
+    y: np.ndarray
+        The results on which to fit
+    init: np.ndarray
+        The initial values of the function&#39;s parameters
+    yerrup: Optional[np.ndarray]
+        The upper error of &#39;y&#39;, used to weight the data points
+    yerrdown: Optional[np.ndarray]
+        The lower error of &#39;y&#39;, used to weight the data points
+    yerr: Optional[np.ndarray]
+        The error of &#39;y&#39;, used to weight the data points. Replaces yerrup and yerrdown.
+    args: tuple
+        Any additionnal arguments to give to self.method
+    **kwargs
+        Any additionnal keyword arguments to pass to scipy.optimize.leastsq
+
+    Returns
+    -------
+    Same as scipy.optimize.leastsq
+    &#34;&#34;&#34;
+    if yerr is not None and (yerrup is not None or yerrdown is not None):
+        raise ValueError(&#34;If yerr is specified, can not specify yerrup or yerrdown too&#34;)
+    if (yerrup is not None and yerrdown is None) or (yerrdown is not None and yerrup is None):
+        raise ValueError(&#34;If one of yerrup or yerrdown is specified, the other must be too&#34;)
+    if yerr is not None:
+        yerrup = yerr
+        yerrdown = -yerr
+
+    def my_error(*args_):
+        yfit = self(x, *args_)
+        weight = np.ones_like(yfit)
+
+        if yerrdown is None:
+            return (yfit - y) ** 2
+        weight[yfit &gt; y] = yerrup[yfit &gt; y]
+        weight[yfit &lt;= y] = yerrdown[yfit &lt;= y]
+        return (yfit - y) ** 2 / weight ** 2
+
+    if len(x) &lt; len(init):
+        logger.warning(&#34;Can not fit a function with less observations than parameters&#34;)
+        return None
+    if len(x) == len(init):
+        logger.warning(&#34;Fitting a function with the same number of observations than parameters&#34;)
+    results = leastsq(my_error, x0=init, args=args, **kwargs)
+    return results</code></pre>
+</details>
+</dd>
+<dt id="adadjust.functions.Function.make_result_equation"><code class="name flex">
+<span>def <span class="ident">make_result_equation</span></span>(<span>self, params: Union[list, tuple, numpy.ndarray], r: Optional[float] = None) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>From a given set of adjustable parameter values, and an optionnal r² value, replaces the 'p[i]' in the
+function's equation by their corresponding values in 'params'. If r² is specified, will be appended to the
+equation in a new line.</p>
+<p>Examples:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; from adadjust import Function
+&gt;&gt;&gt; def func(x, p):
+&gt;&gt;&gt;     return p[0] * x + p[1]
+&gt;&gt;&gt; f = Function(func, &quot;$p[0] \times x + p[1]$&quot;)
+&gt;&gt;&gt; res = f.make_result_equation((1, -2), 0.8)
+&quot;\setlength{\parindent}{0cm} $1 \times x - 2$\\$r^2=0.8$&quot;
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>Union[list, tuple, np.ndarray]</code></dt>
+<dd>&nbsp;</dd>
+<dt><strong><code>r</code></strong> :&ensp;<code>Optional[float]</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The equation with values instead of 'p[i]'</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_result_equation(self, params: Union[list, tuple, np.ndarray], r: Optional[float] = None) -&gt; str:
+    &#34;&#34;&#34;From a given set of adjustable parameter values, and an optionnal r² value, replaces the &#39;p[i]&#39; in the
+    function&#39;s equation by their corresponding values in &#39;params&#39;. If r² is specified, will be appended to the
+    equation in a new line.
+
+    Examples:
+    &gt;&gt;&gt; from adadjust import Function
+    &gt;&gt;&gt; def func(x, p):
+    &gt;&gt;&gt;     return p[0] * x + p[1]
+    &gt;&gt;&gt; f = Function(func, &#34;$p[0] \\times x + p[1]$&#34;)
+    &gt;&gt;&gt; res = f.make_result_equation((1, -2), 0.8)
+    &#34;\\setlength{\\parindent}{0cm} $1 \\times x - 2$\\\\$r^2=0.8$&#34;
+
+    Parameters
+    ----------
+    params: Union[list, tuple, np.ndarray]
+    r: Optional[float]
+
+    Returns
+    -------
+    str
+        The equation with values instead of &#39;p[i]&#39;
+    &#34;&#34;&#34;
+    s = self.equation
+    for iparam in range(len(params)):
+        param = params[iparam]
+        if param &lt; 0:
+            s = s.replace(f&#34;+ p[{iparam}]&#34;, format_x(param))
+            s = s.replace(f&#34;+p[{iparam}]&#34;, format_x(param))
+            s = s.replace(f&#34;- p[{iparam}]&#34;, format_x(float(str(param).replace(&#34;-&#34;, &#34;&#34;))))
+            s = s.replace(f&#34;-p[{iparam}]&#34;, format_x(float(str(param).replace(&#34;-&#34;, &#34;&#34;))))
+            s = s.replace(f&#34;p[{iparam}]&#34;, f&#34;({format_x(param)})&#34;)
+        else:
+            s = s.replace(f&#34;p[{iparam}]&#34;, f&#34;{format_x(param)}&#34;)
+    if r is not None:
+        s = f&#34;{s}\\\\$r^2={r}$&#34;
+    s = &#34;&#34;.join([&#34;\\setlength{\\parindent}{0cm} &#34;, s])
+    return s</code></pre>
+</details>
+</dd>
+<dt id="adadjust.functions.Function.predict"><code class="name flex">
+<span>def <span class="ident">predict</span></span>(<span>self, x: numpy.ndarray, params: numpy.ndarray, *args)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Same as calling self(x, params, *args)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def predict(self, x: np.ndarray, params: np.ndarray, *args):
+    &#34;&#34;&#34;Same as calling self(x, params, *args)&#34;&#34;&#34;
+    return self.method(x, params, *args)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="adadjust" href="index.html">adadjust</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="adadjust.functions.format_x" href="#adadjust.functions.format_x">format_x</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="adadjust.functions.Function" href="#adadjust.functions.Function">Function</a></code></h4>
+<ul class="">
+<li><code><a title="adadjust.functions.Function.compute_rsquared" href="#adadjust.functions.Function.compute_rsquared">compute_rsquared</a></code></li>
+<li><code><a title="adadjust.functions.Function.fit" href="#adadjust.functions.Function.fit">fit</a></code></li>
+<li><code><a title="adadjust.functions.Function.make_result_equation" href="#adadjust.functions.Function.make_result_equation">make_result_equation</a></code></li>
+<li><code><a title="adadjust.functions.Function.make_table" href="#adadjust.functions.Function.make_table">make_table</a></code></li>
+<li><code><a title="adadjust.functions.Function.plot" href="#adadjust.functions.Function.plot">plot</a></code></li>
+<li><code><a title="adadjust.functions.Function.predict" href="#adadjust.functions.Function.predict">predict</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
