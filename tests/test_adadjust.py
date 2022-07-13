@@ -36,19 +36,17 @@ def square(xx, p0, p1):
 
 
 def test_fit():
-    yerr = [0.02, 0.03, 0.12, 0.01, 0.087, 0.013, 0.02, 0.016, 0.024, 0.01]
+    yerr = np.array([0.02, 0.03, 0.12, 0.01, 0.087, 0.013, 0.02, 0.016, 0.024, 0.01])
     func = Function(linfunc, "$p2 \\times (p0 \\times x + p1$)")
     func2 = Function(square, "$p0 \\times x^2 + p1$")
-    params = func.fit(x, y, yerr)
-    rr = round(func.compute_rsquared(x, y, params, 2), 3)
-    params2 = func2.fit(x, y, yerr)
-    rr2 = round(func2.compute_rsquared(x, y, params2), 3)
+    params = func.fit(x, y, yerr=yerr)
+    rr = round(func.compute_rsquared(x, y, *params), 3)
+    params2 = func2.fit(x, y, yerr=yerr)
+    rr2 = round(func2.compute_rsquared(x, y, *params2), 3)
     _ = Function.make_table(
         [func, func2], [params, params2], [rr, rr2], caption="Linear and Square fit", path_output="tests/data/table.pdf"
     )
-    # table.compile()
-    # Function.plot(x, [func, func2], [params, params2], y=y)
-    Function.fit_new(x=x, y=y, yerr=yerr, params=[params, params2], functions=[func, func2], rsquare=[rr, rr2])
+    Function.fit_new(x=x, y=y, yerr=yerr, params=[params, params2], functions=[func, func2], rsquared=[rr, rr2])
     print(params)
     plt.gcf().savefig("tests/data/plot6.png")
 
@@ -58,24 +56,3 @@ def test_fit():
 # func2], [params, params2], [rr, rr2], caption="Linear and Square fit", path_output="tests/data/table.pdf" ) #
 # table.compile() Function.plot(x, [func, func2], [params, params2], y=y, rsquared=[rr, rr2]) plt.gcf().savefig(
 # "tests/data/plot.pdf")
-
-
-"""
-def f(x, a, b,c,d):
-    return a * x ** 3 + b * x ** 2 + c * x + d
-
-
-def linfunc2(x, p):
-    return x**3 * p[0] + x**2 * p[1] + x * p[2] + p[3]
-
-
-def test2():
-    func = Function(f, "")
-    x = np.linspace(1, 8, 8)
-    y = np.array(
-        [-12.3675, -410.85, 1575.4774999999997, 3849.57, 7601.182500000001, 13198.369999999999, 21009.1875, 31401.69])
-    params = func.fit(x, y)
-    print(params)
-    Function.plot(x, [func], [params], y=y)
-    plt.gcf().savefig("tests/data/plot3.pdf")
-    """

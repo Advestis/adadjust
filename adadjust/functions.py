@@ -331,7 +331,7 @@ class Function:
             plt.plot(
                 x,
                 function(x, *param),
-                label=function.make_result_equation(tuple(param, r)),
+                label=function.make_result_equation(tuple(param), r),
                 lw=2.5,
             )
             plt.xlabel('x')
