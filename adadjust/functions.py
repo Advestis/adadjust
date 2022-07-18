@@ -6,6 +6,7 @@ import tablewriter
 import pandas as pd
 import matplotlib.pyplot as plt
 from colorstylecycler import Cycler
+from scipy.optimize import curve_fit
 
 logger = logging.getLogger(__name__)
 
@@ -101,28 +102,24 @@ class Function:
         for iparam in range(len(params)):
             param = params[iparam]
             if param < 0:
-                s = s.replace(f"+ p[{iparam}]", format_x(param))
-                s = s.replace(f"+p[{iparam}]", format_x(param))
-                s = s.replace(f"- p[{iparam}]", format_x(float(str(param).replace("-", ""))))
-                s = s.replace(f"-p[{iparam}]", format_x(float(str(param).replace("-", ""))))
-                s = s.replace(f"p[{iparam}]", f"({format_x(param)})")
+                s = s.replace(f"+ p{iparam}", format_x(param))
+                s = s.replace(f"+p{iparam}", format_x(param))
+                s = s.replace(f"- p{iparam}", format_x(float(str(param).replace("-", ""))))
+                s = s.replace(f"-p{iparam}", format_x(float(str(param).replace("-", ""))))
+                s = s.replace(f"p{iparam}", f"({format_x(param)})")
             else:
-                s = s.replace(f"p[{iparam}]", f"{format_x(param)}")
+                s = s.replace(f"p{iparam}", f"{format_x(param)}")
         if r is not None:
             s = f"{s}\\\\$r^2={r}$"
         s = "".join(["\\setlength{\\parindent}{0cm} ", s])
         return s
 
     def fit(
-        self,
-        x: np.ndarray,
-        y: np.ndarray,
-        init: np.ndarray,
-        yerrup: Optional[np.ndarray] = None,
-        yerrdown: Optional[np.ndarray] = None,
-        yerr: Optional[np.ndarray] = None,
-        args: tuple = (),
-        **kwargs,
+            self,
+            x: np.ndarray,
+            y: np.ndarray,
+            yerr: Optional[np.ndarray] = None,
+            **kwargs,
     ):
         """Adjust the function on 'x' and 'y' by using least square method.
 
@@ -149,31 +146,8 @@ class Function:
         -------
         Same as scipy.optimize.leastsq
         """
-        if yerr is not None and (yerrup is not None or yerrdown is not None):
-            raise ValueError("If yerr is specified, can not specify yerrup or yerrdown too")
-        if (yerrup is not None and yerrdown is None) or (yerrdown is not None and yerrup is None):
-            raise ValueError("If one of yerrup or yerrdown is specified, the other must be too")
-        if yerr is not None:
-            yerrup = yerr
-            yerrdown = -yerr
-
-        def my_error(*args_):
-            yfit = self(x, *args_)
-            weight = np.ones_like(yfit)
-
-            if yerrdown is None:
-                return (yfit - y) ** 2
-            weight[yfit > y] = yerrup[yfit > y]
-            weight[yfit <= y] = yerrdown[yfit <= y]
-            return (yfit - y) ** 2 / weight ** 2
-
-        if len(x) < len(init):
-            logger.warning("Can not fit a function with less observations than parameters")
-            return None
-        if len(x) == len(init):
-            logger.warning("Fitting a function with the same number of observations than parameters")
-        results = leastsq(my_error, x0=init, args=args, **kwargs)
-        return results
+        popt, pcov = curve_fit(self.method, x, y, sigma=yerr)
+        return popt
 
     def predict(self, x: np.ndarray, params: np.ndarray, *args):
         """Same as calling self(x, params, *args)"""
@@ -212,10 +186,10 @@ class Function:
 
     @staticmethod
     def make_table(
-        functions: Collection["Function"],
-        params: Collection[np.ndarray],
-        rsquared: Optional[Collection[float]] = None,
-        **table_kwargs,
+            functions: Collection["Function"],
+            params: Collection[np.ndarray],
+            rsquared: Optional[Collection[float]] = None,
+            **table_kwargs,
     ) -> tablewriter.TableWriter:
         """Create a TableWriter object representing the fit results of several Function objects.
 
@@ -252,17 +226,17 @@ class Function:
 
     @staticmethod
     def plot(
-        x: np.ndarray,
-        functions: Collection["Function"],
-        params: Collection[np.ndarray],
-        y: Optional[np.ndarray] = None,
-        ax: Optional[plt.Axes] = None,
-        yerr: Optional[np.ndarray] = None,
-        xerr: Optional[np.ndarray] = None,
-        xshow: Optional[np.ndarray] = None,
-        rsquared: Collection[float] = None,
-        argss: Collection[tuple] = None,
-        **plot_kwargs,
+            x: np.ndarray,
+            functions: Collection["Function"],
+            params: Collection[np.ndarray],
+            y: Optional[np.ndarray] = None,
+            ax: Optional[plt.Axes] = None,
+            yerr: Optional[np.ndarray] = None,
+            xerr: Optional[np.ndarray] = None,
+            xshow: Optional[np.ndarray] = None,
+            rsquared: Collection[float] = None,
+            argss: Collection[tuple] = None,
+            **plot_kwargs,
     ) -> plt.Axes:
         """
         Plots the result of the fits of several Function.
@@ -344,6 +318,25 @@ class Function:
             )
         ax.legend()
         return ax
+
+    @staticmethod
+    def fit_new(x: np.ndarray, params, functions: Collection["Function"],
+                y: np.ndarray, yerr: Optional[np.ndarray] = None, rsquared: Collection[float] = None):
+        plt.scatter(x, y, c='black', s=5)
+        if yerr is not None:
+            # for err in yerr:
+            plt.errorbar(x, y, yerr,
+                         fmt='none', capsize=10, ecolor='black', zorder=1)
+        for function, param, r in zip(functions, params, rsquared):
+            plt.plot(
+                x,
+                function(x, *param),
+                label=function.make_result_equation(tuple(param), r),
+                lw=2.5,
+            )
+            plt.xlabel('x')
+            plt.ylabel('y')
+            plt.legend()
 
 
 def format_x(s: Union[float, int], with_dollar: bool = False) -> str:
