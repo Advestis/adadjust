@@ -6,3 +6,4 @@ matplotlib~=3.5.2
 colorstylecycler~=0.1.22
 plotly~=5.9.0
 setuptools~=60.9.3
+scikit-learn~=1.1.1
